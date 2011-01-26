@@ -5,8 +5,8 @@ desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
   Dir['*'].each do |file|
-    if %w[Rakefile README.rdoc LICENSE].include? file ||
-      file.start_with? "."
+    if %w[Rakefile README.rdoc LICENSE].include?(file) ||
+      file.start_with?(".")
       puts "Ignoring #{file}"
       next
     end
