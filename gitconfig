@@ -1,0 +1,23 @@
+[use]
+[user]
+	name = coutud
+	email = wam@atwam.com
+[github]
+	user = coutud
+	token = 90a740caa2e5d1c0123228fa67fb4fdb
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 469x281+8+97
+	history-view-vpane-position = 317
+	main-window-view = HistoryView
+	file-view-vpane-position = 316
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+  autocrlf = input
+[apply]
+  whitespace = nowarn
+[format]
+	pretty = %C(yellow)%h%Creset %s %C(red)(%cr)%Creset
