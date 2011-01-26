@@ -1,4 +1,5 @@
 . ~/.zsh/config
+. ~/.zsh/load_oh_my_zsh
 . ~/.aliases
 . ~/.zsh/aliases
 . ~/.zsh/completion
