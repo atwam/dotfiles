@@ -1,48 +1,41 @@
-" based on http://github.com/jferris/config_files/blob/master/vimrc
-
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+"" a very simple rc for quick run of vim
+"" only most needed config is setting here
+"
+"" Use Vim settings, rather then Vi settings (much better!).
+"" This must be first, because it changes other options as a side effect.
 set nocompatible
-
-" allow backspacing over everything in insert mode
+"
+"" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-set nobackup
-set nowritebackup
+"
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
+set number " show line numbers
+set numberwidth=4 "Numbering up to 5 spaces
+set cursorline "Highlight current line
+set nowrap " Turn off word wrapping
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" This is an alternative that also works in block mode, but the deleted
-" text is lost and it only works for putting the current register.
-"vnoremap p "_dp
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
+set t_Co=256 " 256 colors
+if (&t_Co > 2)
+  syntax on 
+  set background=dark 
+  "colorscheme ir_black
+  "colorscheme herald 
+  colorscheme vividchalk
   set hlsearch
-endif
+end
 
-" Switch wrap off for everything
-set nowrap
 
-" Only do this part when compiled with support for autocommands.
+"If support for autocommand
 if has("autocmd")
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
+  "" set filetype check on
   filetype plugin indent on
 
-  " Set File type to 'text' for files ending in .txt
-  autocmd BufNewFile,BufRead *.txt setfiletype text
-
-  " Enable soft-wrapping for text files
   autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -67,19 +60,22 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent " always set autoindenting on
 
 endif " has("autocmd")
 
-" if has("folding")
-  " set foldenable
-  " set foldmethod=syntax
-  " set foldlevel=1
-  " set foldnestmax=2
-  " set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
-" endif
+"Enable folding
+if has('folding')
+  set foldenable
+  set foldmethod=syntax
+  set foldlevel=1
+  set foldnestmax=2
+  set foldlevelstart=99
+  " Space to toggle a fold
+  nnoremap <space> za
+endif
 
-" Softtabs, 2 spaces
+"" set tabstop value and shift width 
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -89,92 +85,78 @@ set laststatus=2
 
 " \ is the leader character
 let mapleader = ","
+  " Leader shortcuts for Rails commands
+  map <Leader>m :Rmodel 
+  map <Leader>c :Rcontroller 
+  map <Leader>v :Rview 
+  map <Leader>u :Runittest 
+  map <Leader>f :Rfunctionaltest 
+  map <Leader>tm :RTmodel 
+  map <Leader>tc :RTcontroller 
+  map <Leader>tv :RTview 
+  map <Leader>tu :RTunittest 
+  map <Leader>tf :RTfunctionaltest 
+  map <Leader>sm :RSmodel 
+  map <Leader>sc :RScontroller 
+  map <Leader>sv :RSview 
+  map <Leader>su :RSunittest 
+  map <Leader>sf :RSfunctionaltest 
 
-" Edit the README_FOR_APP (makes :R commands work)
-map <Leader>R :e doc/README_FOR_APP<CR>
+  " Hide search highlighting
+  map <Leader>h :set invhls <CR>
 
-" Leader shortcuts for Rails commands
-map <Leader>m :Rmodel 
-map <Leader>c :Rcontroller 
-map <Leader>v :Rview 
-map <Leader>u :Runittest 
-map <Leader>f :Rfunctionaltest 
-map <Leader>tm :RTmodel 
-map <Leader>tc :RTcontroller 
-map <Leader>tv :RTview 
-map <Leader>tu :RTunittest 
-map <Leader>tf :RTfunctionaltest 
-map <Leader>sm :RSmodel 
-map <Leader>sc :RScontroller 
-map <Leader>sv :RSview 
-map <Leader>su :RSunittest 
-map <Leader>sf :RSfunctionaltest 
+  " Opens an edit command with the path of the currently edited file filled in
+  " Normal mode: <Leader>e
+  map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
-" Hide search highlighting
-map <Leader>h :set invhls <CR>
+  " Opens a tab edit command with the path of the currently edited file filled in
+  " Normal mode: <Leader>t
+  map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+  " Inserts the path of the currently edited file into a command
+  " Command mode: Ctrl+P
+  cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
-" Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+  " Duplicate a selection
+  " Visual mode: D
+  vmap D y'>p
+  " Press Shift+P while in visual mode to replace the selection without
+  " overwriting the default register
+  vmap P p :call setreg('"', getreg('0')) <CR>
 
-" Inserts the path of the currently edited file into a command
-" Command mode: Ctrl+P
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+  " For Haml & sass
+  au! BufRead,BufNewFile *.haml         setfiletype haml
+  autocmd BufNewFile,BufRead *.scss setf sass
 
-" Duplicate a selection
-" Visual mode: D
-vmap D y'>p
+  " No Help, please
+  nmap <F1> <Esc>
 
-" Press Shift+P while in visual mode to replace the selection without
-" overwriting the default register
-vmap P p :call setreg('"', getreg('0')) <CR>
+  " Press ^F from insert mode to insert the current file name
+  imap <C-F> <C-R>=expand("%")<CR>
 
-" For Haml
-au! BufRead,BufNewFile *.haml         setfiletype haml
+  " Maps autocomplete to tab
+  imap <Tab> <C-N>
 
-" No Help, please
-nmap <F1> <Esc>
+  imap <C-L> <Space>=><Space>
 
-" Press ^F from insert mode to insert the current file name
-imap <C-F> <C-R>=expand("%")<CR>
+  " Shortcut to auto indent whole file
+  nmap <F11> 1G=G
+  imap <F11> <ESC>1G=Ga
 
-" Maps autocomplete to tab
-imap <Tab> <C-N>
+  " Display extra whitespace
+  " set list listchars=tab:»·,trail:·
 
-imap <C-L> <Space>=><Space>
+  " Edit routes
+  command! Rroutes :e config/routes.rb
+  command! Rschema :e db/schema.rb
 
-" Display extra whitespace
-" set list listchars=tab:»·,trail:·
-
-" Edit routes
-command! Rroutes :e config/routes.rb
-command! Rschema :e db/schema.rb
+  ",o for a new line below
+" End of remapping
 
 " Local config
 if filereadable(".vimrc.local")
   source .vimrc.local
 endif
-
-" Use Ack instead of Grep when available
-if executable("ack")
-  set grepprg=ack\ -H\ --nogroup\ --nocolor\ --ignore-dir=tmp\ --ignore-dir=coverage
-endif
-
-" Color scheme
-" colorscheme vividchalk
-" highlight NonText guibg=#060606
-" highlight Folded  guibg=#0A0A0A guifg=#9090D0
-
-" Numbers
-set number
-set numberwidth=5
-
-" Snippets are activated by Shift+Tab
-let g:snippetsEmu_key = "<S-Tab>"
 
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)
@@ -192,16 +174,42 @@ set tags=./tags;
 
 let g:fuf_splitPathMatching=1
 
-" Open URL
-command -bar -nargs=1 OpenURL :!open <args>
-function! OpenURL()
-  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
-  echo s:uri
-  if s:uri != ""
-	  exec "!open \"" . s:uri . "\""
-  else
-	  echo "No URI found in line."
-  endif
-endfunction
-map <Leader>w :call OpenURL()<CR>
+"Replace global and not just once per line
+set gdefault
+"
+set sessionoptions+=unix,slash
+"
+"" encodings configure
+set fileencoding=utf-8
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,gb2312,cp936
+"
+""setting about indent
+set autoindent
+set smartindent
+"
+""setting about old window resizing behavior when open a new window
+set winfixheight
+"" not let all windows keep the same height/width
+set noequalalways
+
+if has('gui_running')
+  "Disable beep and sound
+  :set noerrorbells
+  :set visualbell
+  "Remove gui toolbar
+  set guioptions-=T
+  :set t_vb=
+  :set guifont=Consolas\ 11
+endif
+
+call pathogen#runtime_append_all_bundles() 
+
+" Remap w!! to write with sudo permissions
+cmap w!! %!sudo tee > /dev/null %
+
+" Status line format:
+" {buffer number}: {file name, relative path to the current working directory}{modified flag}{readonly flag}
+" {help flag}{preview flag} [file type, encoding, format] [current line-total lines, current column][position percentage in file]
+set statusline=%n:\ %f%m%r%h%w\ [%Y,%{&fileencoding},%{&fileformat}]\ [%l-%L,%v][%p%%]
 
