@@ -69,7 +69,7 @@ if has('folding')
   set foldenable
   set foldmethod=syntax
   set foldlevel=1
-  set foldnestmax=2
+  "set foldnestmax=2
   set foldlevelstart=99
   " Space to toggle a fold
   nnoremap <space> za
