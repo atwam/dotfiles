@@ -35,3 +35,6 @@ alias rst='touch tmp/restart.txt'
 
 # commands starting with % for pasting from web
 alias %=' '
+
+# Force tmux to assume 256 colors
+alias tmux='tmux -2'
