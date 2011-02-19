@@ -9,3 +9,12 @@
 
 # User specific aliases and functions
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
+
+# Special mode to launch zsh with a command but return to an interactive shell if stopped (for use with tmux)
+if [[ $1 == eval ]]
+then
+  "$@"
+  set --
+fi
+alias zshi='zsh -is eval' 
+
