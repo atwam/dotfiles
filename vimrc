@@ -149,6 +149,9 @@ let mapleader = ","
   " Edit routes
   command! Rroutes :e config/routes.rb
   command! Rschema :e db/schema.rb
+	autocmd User Rails Rnavcommand config   config   -glob=*.*  -suffix= -default=routes.rb
+  autocmd User Rails Rnavcommand factory spec/factories -glob=**/*.rb -suffix=
+  autocmd User Rails Rnavcommand scss    app/stylesheets -glob=**/* -suffix=
 
   ",o for a new line below
 " End of remapping
