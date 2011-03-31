@@ -122,10 +122,10 @@ let mapleader = ","
   vmap D y'>p
   " Press Shift+P while in visual mode to replace the selection without
   " overwriting the default register
-  vmap P p :call setreg('"', getreg('0')) <CR>
+  vmap P p:call setreg('"', getreg('0'))<CR>
 
   " For Haml & sass
-  au! BufRead,BufNewFile *.haml         setfiletype haml
+  au! BufRead,BufNewFile *.haml setfiletype haml
   autocmd BufNewFile,BufRead *.scss setf sass
 
   " No Help, please
@@ -140,8 +140,8 @@ let mapleader = ","
   imap <C-L> <Space>=><Space>
 
   " Shortcut to auto indent whole file
-  nmap <F11> 1G=G
-  imap <F11> <ESC>1G=Ga
+  map  <silent> <F5> mmgg=G'm
+  imap <silent> <F5> <Esc> mmgg=G'm
 
   " Display extra whitespace
   " set list listchars=tab:»·,trail:·
@@ -152,6 +152,8 @@ let mapleader = ","
 	autocmd User Rails Rnavcommand config   config   -glob=*.*  -suffix= -default=routes.rb
   autocmd User Rails Rnavcommand factory spec/factories -glob=**/*.rb -suffix=
   autocmd User Rails Rnavcommand scss    app/stylesheets -glob=**/* -suffix=
+
+  autocmd FileType haml set foldmethod=indent
 
   ",o for a new line below
 " End of remapping
@@ -168,7 +170,7 @@ set wildmode=list:longest,list:full
 set complete=.,t
 
 " case only matters with mixed case expressions
-set ignorecase
+"set ignorecase
 set smartcase
 
 " Tags
