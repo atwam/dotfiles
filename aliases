@@ -38,3 +38,5 @@ alias %=' '
 
 # Force tmux to assume 256 colors
 alias tmux='tmux -2'
+# Use gvim in terminal mode when launching vim
+alias vim='gvim -v'
