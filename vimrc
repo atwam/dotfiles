@@ -208,7 +208,8 @@ if has('gui_running')
   :set guifont=Consolas\ 11
 endif
 
-call pathogen#runtime_append_all_bundles() 
+"call pathogen#runtime_append_all_bundles() 
+call pathogen#infect()
 
 " Remap w!! to write with sudo permissions
 cmap w!! %!sudo tee > /dev/null %
