@@ -1,5 +1,4 @@
 #!/usr/bin/ruby
-require 'irb/completion'
 require 'irb/ext/save-history'
 
 IRB.conf[:SAVE_HISTORY] = 1000
@@ -7,18 +6,30 @@ IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 
-%w[rubygems looksee/shortcuts wirble].each do |gem|
-  begin
-    require gem
-  rescue LoadError => err
-    warn "Couldn't load #{gem} : #{err}"
-  end
+require 'rubygems'
+
+begin
+  require 'looksee'
+rescue LoadError => err
 end
 
-if Wirble
-  Wirble.init
-  Wirble.colorize
+begin
+  require 'wirble'
+  if Wirble
+    Wirble.init
+    Wirble.colorize
+  end
+rescue LoadError => err
 end
+
+begin
+  require 'bond'
+  Bond.start
+rescue LoadError => err
+  warn "Couldn't load bond gem"
+  require 'irb/completion'
+end
+
 
 class Object
   # list methods which aren't in superclass

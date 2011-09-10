@@ -153,7 +153,7 @@ let mapleader = ","
   autocmd User Rails Rnavcommand factory spec/factories -glob=**/*.rb -suffix=
   autocmd User Rails Rnavcommand scss    app/stylesheets -glob=**/* -suffix=
 
-  autocmd FileType haml set foldmethod=indent
+  "autocmd FileType haml set foldmethod=indent
 
   ",o for a new line below
 " End of remapping

@@ -1,0 +1,3 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/wam/Dev/scube/vendor/plugins/localized_language_select/lib/localized_language_select'
