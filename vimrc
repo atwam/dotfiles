@@ -149,7 +149,7 @@ let mapleader = ","
   " Edit routes
   command! Rroutes :e config/routes.rb
   command! Rschema :e db/schema.rb
-	autocmd User Rails Rnavcommand config   config   -glob=*.*  -suffix= -default=routes.rb
+	autocmd User Rails Rnavcommand config   config   -glob=*.*  -suffix= -default=application.rb
   autocmd User Rails Rnavcommand factory spec/factories -glob=**/*.rb -suffix=
   autocmd User Rails Rnavcommand scss    app/stylesheets -glob=**/* -suffix=
 
@@ -210,6 +210,7 @@ endif
 
 "call pathogen#runtime_append_all_bundles() 
 call pathogen#infect()
+call pathogen#helptags()
 
 " Remap w!! to write with sudo permissions
 cmap w!! %!sudo tee > /dev/null %
