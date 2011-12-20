@@ -1,0 +1,6 @@
+# copy paste
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
+# Use gvim in terminal mode when launching vim
+alias vim='gvim -v'
