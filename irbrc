@@ -11,6 +11,7 @@ require 'rubygems'
 begin
   require 'looksee'
 rescue LoadError => err
+  warn "Looksee gem isn't installed"
 end
 
 begin
@@ -20,6 +21,7 @@ begin
     Wirble.colorize
   end
 rescue LoadError => err
+  warn "Wirble gem isn't installed"
 end
 
 begin
