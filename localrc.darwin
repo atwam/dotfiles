@@ -1,1 +1,3 @@
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim -v'
+# Make sure that we use brew version of ctags
+alias ctags="`brew --prefix`/bin/ctags"
