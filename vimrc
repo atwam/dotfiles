@@ -83,8 +83,8 @@ set expandtab
 " Always display the status line
 set laststatus=2
 
-" \ is the leader character
-let mapleader = ","
+" \ is the leader character if empty
+let mapleader = ""
   " Leader shortcuts for Rails commands
   map <Leader>m :Rmodel 
   map <Leader>c :Rcontroller 
