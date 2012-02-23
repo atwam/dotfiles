@@ -220,5 +220,5 @@ cmap w!! %!sudo tee > /dev/null %
 " {help flag}{preview flag} [file type, encoding, format] [current line-total lines, current column][position percentage in file]
 " %= is split point with right
 " Then fugitive
-set statusline=%n:\ %f%m%r%h%w\ [%Y,%{&fileencoding},%{&fileformat}]\ %{fugitive#statusline()}%=[%l-%L,%v][%p%%]
+set statusline=%n:\ %f%m%r%h%w\ [%Y,%{&fileencoding},%{&fileformat}]\ %{fugitive#statusline()}\ %{SyntasticStatuslineFlag()}%=[%l-%L,%v][%p%%]
 

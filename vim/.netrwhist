@@ -1,4 +1,4 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/wam/Dev/scube/vendor/plugins/localized_language_select/lib/localized_language_select'
-let g:netrw_dirhist_2='/home/wam/Dev/scube/vendor/bundle/ruby/1.9.1/gems/actionpack-3.1.0/lib/action_view/helpers/asset_tag_helpers'
+let g:netrw_dirhist_1='/Users/wam/Dev/@forks/attr_encrypted/lib/attr_encrypted'
+let g:netrw_dirhist_2='/Users/wam/DevXCode/Calculator/Calculator.xcodeproj'
