@@ -4,7 +4,7 @@
 	email = wam@atwam.com
 [github]
 	user = coutud
-	token = 90a740caa2e5d1c0123228fa67fb4fdb
+  token = ! echo ~/.githubtoken 2> /dev/null
 [giggle]
 	main-window-maximized = true
 	main-window-geometry = 469x281+8+97
