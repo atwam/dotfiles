@@ -1,9 +1,9 @@
 [use]
 [user]
-	name = coutud
+	name = atwam
 	email = wam@atwam.com
 [github]
-	user = coutud
+	user = atwam
   token = ! echo ~/.githubtoken 2> /dev/null
 [giggle]
 	main-window-maximized = true
@@ -21,3 +21,5 @@
   whitespace = nowarn
 [format]
 	pretty = %C(yellow)%h%Creset %s %C(red)(%cr)%Creset
+[push]
+	default = tracking
