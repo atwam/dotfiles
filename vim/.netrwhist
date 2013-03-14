@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/wam/Dev/@forks/attr_encrypted/lib/attr_encrypted'
 let g:netrw_dirhist_2='/Users/wam/DevXCode/Calculator/Calculator.xcodeproj'
 let g:netrw_dirhist_3='/Users/wam/Dev/atwam-blog'
+let g:netrw_dirhist_4='/Users/wam/.rvm/gems/ruby-1.9.3-p0/gems/carrierwave-0.5.8'
