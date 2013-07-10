@@ -149,9 +149,9 @@ let mapleader = ""
   " Edit routes
   command! Rroutes :e config/routes.rb
   command! Rschema :e db/schema.rb
-	autocmd User Rails Rnavcommand config   config   -glob=*.*  -suffix= -default=application.rb
-  autocmd User Rails Rnavcommand factory spec/factories -glob=**/*.rb -suffix=
-  autocmd User Rails Rnavcommand scss    app/stylesheets -glob=**/* -suffix=
+	autocmd User Rails Rnavcommand config   config   -glob=**/* -suffix=.rb -default=config/application.rb
+  autocmd User Rails Rnavcommand factory  spec/factories -glob=**/* -suffix=.rb
+  autocmd User Rails Rnavcommand input    app/inputs -glob=**/* -suffix=_input.rb
 
   "autocmd FileType haml set foldmethod=indent
 

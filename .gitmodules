@@ -55,3 +55,12 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
+[submodule "vim/bundle/vim-octopress"]
+	path = vim/bundle/vim-octopress
+	url = https://github.com/tangledhelix/vim-octopress.git
+[submodule "vim/bundle/ag.vim"]
+	path = vim/bundle/ag.vim
+	url = https://github.com/rking/ag.vim
+[submodule "vim/bundle/handlebars"]
+	path = vim/bundle/handlebars
+	url = git://github.com/nono/vim-handlebars.git

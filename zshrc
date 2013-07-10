@@ -21,3 +21,4 @@ then
 fi
 alias zshi='zsh -is eval' 
 
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

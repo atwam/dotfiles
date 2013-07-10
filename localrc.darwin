@@ -1,5 +1,5 @@
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim -v'
-# Make sure that we use brew version of ctags
-alias ctags="`brew --prefix`/bin/ctags"
-
 alias ls="ls -FG"
+
+# Make sure that we use brew version by default
+export PATH=/usr/local/bin:$PATH

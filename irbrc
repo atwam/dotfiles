@@ -14,25 +14,6 @@ rescue LoadError => err
   warn "Looksee gem isn't installed"
 end
 
-begin
-  require 'wirble'
-  if Wirble
-    Wirble.init
-    Wirble.colorize
-  end
-rescue LoadError => err
-  warn "Wirble gem isn't installed"
-end
-
-begin
-  require 'bond'
-  Bond.start
-rescue LoadError => err
-  warn "Couldn't load bond gem"
-  require 'irb/completion'
-end
-
-
 class Object
   # list methods which aren't in superclass
   def local_methods(obj = self)
