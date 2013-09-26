@@ -85,23 +85,6 @@ set laststatus=2
 
 " \ is the leader character if empty
 let mapleader = ""
-  " Leader shortcuts for Rails commands
-  map <Leader>m :Rmodel 
-  map <Leader>c :Rcontroller 
-  map <Leader>v :Rview 
-  map <Leader>u :Runittest 
-  map <Leader>f :Rfunctionaltest 
-  map <Leader>tm :RTmodel 
-  map <Leader>tc :RTcontroller 
-  map <Leader>tv :RTview 
-  map <Leader>tu :RTunittest 
-  map <Leader>tf :RTfunctionaltest 
-  map <Leader>sm :RSmodel 
-  map <Leader>sc :RScontroller 
-  map <Leader>sv :RSview 
-  map <Leader>su :RSunittest 
-  map <Leader>sf :RSfunctionaltest 
-
   " Hide search highlighting
   map <Leader>h :set invhls <CR>
 
@@ -157,11 +140,6 @@ let mapleader = ""
 
   ",o for a new line below
 " End of remapping
-
-" Local config
-if filereadable(".vimrc.local")
-  source .vimrc.local
-endif
 
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)
@@ -222,3 +200,7 @@ cmap w!! %!sudo tee > /dev/null %
 " Then fugitive
 set statusline=%n:\ %f%m%r%h%w\ [%Y,%{&fileencoding},%{&fileformat}]\ %{fugitive#statusline()}\ %{SyntasticStatuslineFlag()}%=[%l-%L,%v][%p%%]
 
+" Local config
+if filereadable(glob("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif

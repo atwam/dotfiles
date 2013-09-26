@@ -2,3 +2,5 @@
 tags
 *.swp
 vim/.netrwhist
+vim/bundle/golang
+vim/.netrwhist

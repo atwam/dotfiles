@@ -1,5 +1,8 @@
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim -v'
 alias ls="ls -FG"
 
+export GOPATH=/Users/wam/Dev/go
+export GOROOT=/usr/local/Cellar/go/1.1.1
+
 # Make sure that we use brew version by default
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$GOPATH/bin:$PATH
