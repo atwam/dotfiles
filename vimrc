@@ -95,6 +95,9 @@ let mapleader = ""
   " Opens a tab edit command with the path of the currently edited file filled in
   " Normal mode: <Leader>t
   map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+  
+  " Toggle Tagbar using F9
+  map <F9> :TagbarToggle <CR>
 
   " Inserts the path of the currently edited file into a command
   " Command mode: Ctrl+P
@@ -183,7 +186,7 @@ if has('gui_running')
   "Remove gui toolbar
   set guioptions-=T
   :set t_vb=
-  :set guifont=Consolas\ 11
+  ":set guifont=Consolas\ 11
 endif
 
 "call pathogen#runtime_append_all_bundles() 
@@ -199,6 +202,7 @@ cmap w!! %!sudo tee > /dev/null %
 " %= is split point with right
 " Then fugitive
 set statusline=%n:\ %f%m%r%h%w\ [%Y,%{&fileencoding},%{&fileformat}]\ %{fugitive#statusline()}\ %{SyntasticStatuslineFlag()}%=[%l-%L,%v][%p%%]
+let g:airline_powerline_fonts = 1
 
 " Local config
 if filereadable(glob("~/.vimrc.local"))

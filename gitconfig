@@ -17,6 +17,7 @@
 	branch = auto
 [core]
   autocrlf = input
+  excludesfile = ~/.gitignore
 [apply]
   whitespace = nowarn
 [format]
