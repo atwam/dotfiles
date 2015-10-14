@@ -1,14 +1,16 @@
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim -v'
 alias ls="ls -FG"
 
-export GOPATH=/Users/wam/Dev/go
-export GOROOT=/usr/local/Cellar/go/1.1.1
+#export GOPATH=/Users/wam/Dev/go
+export GOROOT=/usr/local/opt/go/libexec
 
 # Make sure that we use brew version by default
-export PATH=/usr/local/bin:$GOPATH/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH
+export RBENV_ROOT=~/.rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Stuff needed by ec2 tools
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
-export EC2_CERT="$(/bin/ls "$HOME"/.ec2/cert-*.pem | /usr/bin/head -1)"
-export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.6.12.0/libexec"
+# export JAVA_HOME="$(/usr/libexec/java_home)"
+# export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
+# export EC2_CERT="$(/bin/ls "$HOME"/.ec2/cert-*.pem | /usr/bin/head -1)"
+# export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.6.12.0/libexec"

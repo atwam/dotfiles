@@ -140,6 +140,9 @@ let mapleader = ""
   autocmd User Rails Rnavcommand input    app/inputs -glob=**/* -suffix=_input.rb
 
   "autocmd FileType haml set foldmethod=indent
+ 
+" JSX plugin
+let g:jsx_ext_required = 0
 
   ",o for a new line below
 " End of remapping
@@ -157,6 +160,9 @@ set smartcase
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
+
+" Wildignore for command-T
+set wildignore+=node_modules/*,build/*
 
 let g:fuf_splitPathMatching=1
 
