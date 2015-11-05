@@ -85,62 +85,62 @@ set laststatus=2
 
 " \ is the leader character if empty
 let mapleader = ""
-  " Hide search highlighting
-  map <Leader>h :set invhls <CR>
+" Hide search highlighting
+map <Leader>h :set invhls <CR>
 
-  " Opens an edit command with the path of the currently edited file filled in
-  " Normal mode: <Leader>e
-  map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" Opens an edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>e
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
-  " Opens a tab edit command with the path of the currently edited file filled in
-  " Normal mode: <Leader>t
-  map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-  
-  " Toggle Tagbar using F9
-  map <F9> :TagbarToggle <CR>
+" Opens a tab edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>t
+map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-  " Inserts the path of the currently edited file into a command
-  " Command mode: Ctrl+P
-  cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+" Toggle Tagbar using F9
+map <F9> :TagbarToggle <CR>
 
-  " Duplicate a selection
-  " Visual mode: D
-  vmap D y'>p
-  " Press Shift+P while in visual mode to replace the selection without
-  " overwriting the default register
-  vmap P p:call setreg('"', getreg('0'))<CR>
+" Inserts the path of the currently edited file into a command
+" Command mode: Ctrl+P
+cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
-  " For Haml & sass
-  au! BufRead,BufNewFile *.haml setfiletype haml
-  autocmd BufNewFile,BufRead *.scss setf sass
+" Duplicate a selection
+" Visual mode: D
+vmap D y'>p
+" Press Shift+P while in visual mode to replace the selection without
+" overwriting the default register
+vmap P p:call setreg('"', getreg('0'))<CR>
 
-  " No Help, please
-  nmap <F1> <Esc>
+" For Haml & sass
+au! BufRead,BufNewFile *.haml setfiletype haml
+autocmd BufNewFile,BufRead *.scss setf sass
 
-  " Press ^F from insert mode to insert the current file name
-  imap <C-F> <C-R>=expand("%")<CR>
+" No Help, please
+nmap <F1> <Esc>
 
-  " Maps autocomplete to tab
-  imap <Tab> <C-N>
+" Press ^F from insert mode to insert the current file name
+imap <C-F> <C-R>=expand("%")<CR>
 
-  imap <C-L> <Space>=><Space>
+" Maps autocomplete to tab
+imap <Tab> <C-N>
 
-  " Shortcut to auto indent whole file
-  map  <silent> <F5> mmgg=G'm
-  imap <silent> <F5> <Esc> mmgg=G'm
+imap <C-L> <Space>=><Space>
 
-  " Display extra whitespace
-  " set list listchars=tab:»·,trail:·
+" Shortcut to auto indent whole file
+map  <silent> <F5> mmgg=G'm
+imap <silent> <F5> <Esc> mmgg=G'm
 
-  " Edit routes
-  command! Rroutes :e config/routes.rb
-  command! Rschema :e db/schema.rb
-	autocmd User Rails Rnavcommand config   config   -glob=**/* -suffix=.rb -default=config/application.rb
-  autocmd User Rails Rnavcommand factory  spec/factories -glob=**/* -suffix=.rb
-  autocmd User Rails Rnavcommand input    app/inputs -glob=**/* -suffix=_input.rb
+" Display extra whitespace
+" set list listchars=tab:»·,trail:·
 
-  "autocmd FileType haml set foldmethod=indent
- 
+" Edit routes
+command! Rroutes :e config/routes.rb
+command! Rschema :e db/schema.rb
+autocmd User Rails Rnavcommand config   config   -glob=**/* -suffix=.rb -default=config/application.rb
+autocmd User Rails Rnavcommand factory  spec/factories -glob=**/* -suffix=.rb
+autocmd User Rails Rnavcommand input    app/inputs -glob=**/* -suffix=_input.rb
+
+"autocmd FileType haml set foldmethod=indent
+
 " JSX plugin
 let g:jsx_ext_required = 0
 
