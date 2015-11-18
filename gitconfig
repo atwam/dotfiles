@@ -1,7 +1,7 @@
 [use]
 [user]
 	name = atwam
-	email = wam@atwam.com
+	email = damien@atwam.com
 [github]
 	user = atwam
   token = ! echo ~/.githubtoken 2> /dev/null
@@ -15,6 +15,7 @@
 	diff = auto
 	status = auto
 	branch = auto
+	ui = true
 [core]
   autocrlf = input
   excludesfile = ~/.gitignore
@@ -24,3 +25,15 @@
 	pretty = %C(yellow)%h%Creset %s %C(red)(%cr)%Creset
 [push]
 	default = tracking
+[alias]
+	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
+[merge]
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+	keepBackup = false

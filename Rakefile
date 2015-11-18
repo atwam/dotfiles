@@ -1,6 +1,11 @@
 require 'rake'
 require 'erb'
 
+MAPPINGS = {
+  "bin" => "bin"
+}
+
+
 desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
@@ -10,7 +15,8 @@ task :install do
       next
     end
 
-    destination_basename = ".#{file.sub(/\.(erb|darwin|linux|cygwin)/, '')}"
+    destination_basename = file.sub(/\.(erb|darwin|linux|cygwin)/, '')
+    destination_basename = MAPPINGS[destination_basename] || ".#{destination_basename}"
     destination_file = File.join(ENV["HOME"], destination_basename )
     
     if File.exist?(destination_file)
