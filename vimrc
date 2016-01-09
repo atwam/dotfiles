@@ -132,14 +132,27 @@ imap <silent> <F5> <Esc> mmgg=G'm
 " Display extra whitespace
 " set list listchars=tab:»·,trail:·
 
-" Edit routes
-command! Rroutes :e config/routes.rb
-command! Rschema :e db/schema.rb
-
 "autocmd FileType haml set foldmethod=indent
 
 " JSX plugin
 let g:jsx_ext_required = 0
+
+" rails projection
+let g:rails_projections = {
+  \ "spec/factories/*.rb" : {"command": "factory"},
+  \ "config/routes.rb" : {"command": "routes"},
+  \ "db/schema.rb" : {"command": "schema"},
+  \ "app/notifiers/*_notifier.rb" : {
+  \   "command": "notifier",
+  \   "template":
+  \   ["class %SNotifier < ApplicationNotifier", "end"]
+  \   },
+  \ "app/policies/*_policy.rb" : {
+  \   "command": "policy",
+  \   "template":
+  \   ["class %SPolicy < ApplicationPolicy", "end"]
+  \   }
+  \ }
 
   ",o for a new line below
 " End of remapping

@@ -88,3 +88,6 @@
 [submodule "vim/bundle/vim-script"]
 	path = vim/bundle/vim-script
 	url = git://github.com/slim-template/vim-slim.git
+[submodule "vim/bundle/vim-json"]
+	path = vim/bundle/vim-json
+	url = git@github.com:elzr/vim-json.git
