@@ -30,6 +30,18 @@ if (&t_Co > 2)
   set hlsearch
 end
 
+if has('mouse')
+  set mouse=a
+  if &term =~ "xterm" || &term =~ "screen"
+    " as of March 2013, this works:
+    set ttymouse=xterm2
+
+    " previously, I found that ttymouse was getting reset, so had
+    " to reapply it via an autocmd like this:
+    autocmd VimEnter,FocusGained,BufEnter * set ttymouse=xterm2
+  endif
+endif
+
 
 "If support for autocommand
 if has("autocmd")

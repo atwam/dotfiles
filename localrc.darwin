@@ -9,6 +9,9 @@ export PATH=/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$PATH
 export RBENV_ROOT=~/.rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# Used to run local npm bin scripts
+alias npm-exec='PATH=$(npm bin):$PATH'
+
 # Stuff needed by ec2 tools
 # export JAVA_HOME="$(/usr/libexec/java_home)"
 # export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
