@@ -94,3 +94,6 @@
 [submodule "vim/bundle/vim-localvimrc"]
 	path = vim/bundle/vim-localvimrc
 	url = git@github.com:embear/vim-localvimrc.git
+[submodule "vim/bundle/vim-unimpaired"]
+	path = vim/bundle/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
