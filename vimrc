@@ -184,7 +184,7 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
 
 " Wildignore for command-T
-set wildignore+=node_modules/*,build/*
+set wildignore+=node_modules/*
 
 let g:fuf_splitPathMatching=1
 

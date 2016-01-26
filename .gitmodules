@@ -97,3 +97,6 @@
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "vim/bundle/json5"]
+	path = vim/bundle/json5
+	url = https://github.com/GutenYe/json5.vim
