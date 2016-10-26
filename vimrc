@@ -4,6 +4,41 @@
 "" Use Vim settings, rather then Vi settings (much better!).
 "" This must be first, because it changes other options as a side effect.
 set nocompatible
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'gutenye/json5.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-abolish'
+Plug 'vim-airline/vim-airline'
+Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-bundler'
+Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go'
+Plug 'tpope/vim-haml'
+Plug 'digitaltoad/vim-pug' " Used for jade/pug templates
+Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
+Plug 'mxw/vim-jsx'
+Plug 'groenewege/vim-less'
+Plug 'embear/vim-localvimrc'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'slim-template/vim-slim'
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" Add plugins to &runtimepath
+call plug#end()
 "
 "" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -106,7 +141,7 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Toggle Tagbar using F9
 map <F9> :TagbarToggle <CR>
@@ -115,9 +150,6 @@ map <F9> :TagbarToggle <CR>
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
-" Duplicate a selection
-" Visual mode: D
-vmap D y'>p
 " Press Shift+P while in visual mode to replace the selection without
 " overwriting the default register
 vmap P p:call setreg('"', getreg('0'))<CR>
@@ -135,12 +167,6 @@ imap <C-F> <C-R>=expand("%")<CR>
 " Maps autocomplete to tab
 imap <Tab> <C-N>
 
-imap <C-L> <Space>=><Space>
-
-" Shortcut to auto indent whole file
-map  <silent> <F5> mmgg=G'm
-imap <silent> <F5> <Esc> mmgg=G'm
-
 " Display extra whitespace
 " set list listchars=tab:»·,trail:·
 
@@ -153,17 +179,7 @@ let g:jsx_ext_required = 0
 let g:rails_projections = {
   \ "spec/factories/*.rb" : {"command": "factory"},
   \ "config/routes.rb" : {"command": "routes"},
-  \ "db/schema.rb" : {"command": "schema"},
-  \ "app/notifiers/*_notifier.rb" : {
-  \   "command": "notifier",
-  \   "template":
-  \   ["class %SNotifier < ApplicationNotifier", "end"]
-  \   },
-  \ "app/policies/*_policy.rb" : {
-  \   "command": "policy",
-  \   "template":
-  \   ["class %SPolicy < ApplicationPolicy", "end"]
-  \   }
+  \ "db/schema.rb" : {"command": "schema"}
   \ }
 
   ",o for a new line below
@@ -187,6 +203,8 @@ set tags=./tags;
 set wildignore+=node_modules/*
 
 let g:fuf_splitPathMatching=1
+let g:fzf_command_prefix = 'Fzf'
+nmap <c-p> :FzfFiles<CR>
 
 "Replace global and not just once per line
 set gdefault
@@ -216,10 +234,6 @@ if has('gui_running')
   :set t_vb=
   ":set guifont=Consolas\ 11
 endif
-
-"call pathogen#runtime_append_all_bundles() 
-call pathogen#infect()
-call pathogen#helptags()
 
 " Remap w!! to write with sudo permissions
 cmap w!! %!sudo tee > /dev/null %
